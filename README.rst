@@ -49,3 +49,17 @@ List all codes
 
     ...
 
+
+Show help
+
+::
+
+    $ hc -h
+    Usage: hc [code]
+
+    Without parameters lists all available
+    HTTP status codes and their description
+
+
+    Options:
+      -h, --help  show this help message and exit
