@@ -1,4 +1,4 @@
-Requests is written and maintained by Ruslan Spivak and
+`httpcode` is written and maintained by Ruslan Spivak and
 various contributors:
 
 Patches and Suggestions
