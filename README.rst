@@ -7,7 +7,7 @@
     |_| |_| |_|   |_| |_|    \____\___/|____/|_____|
 
 
-`httpcode` is a little utility that displays the meaning of an HTTP
+`httpcode` is a little utility that explains the meaning of an HTTP
 status code on the command line.
 
 Installation
