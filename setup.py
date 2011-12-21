@@ -32,6 +32,6 @@ setup(
     hc = httpcode:main
     """,
     classifiers=filter(None, classifiers.split('\n')),
-    long_description=read('README.rst'),
+    long_description=read('README.rst') + '\n\n' + read('CHANGES.rst'),
     extras_require={'test': []}
     )
