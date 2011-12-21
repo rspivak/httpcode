@@ -115,7 +115,7 @@ def _print_code(code):
     try:
         short, long = STATUS_CODES[code]
     except KeyError as e:
-        sys.stderr.write('No description found for code: %s' % code)
+        sys.stderr.write('No description found for code: %s\n' % code)
         sys.exit(-1)
     else:
         msg = MSG_FMT.format(code=code, message=short, explain=long)
