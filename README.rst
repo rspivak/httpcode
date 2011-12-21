@@ -8,7 +8,7 @@
 
 
 `httpcode` is a little utility that displays the meaning of an HTTP
-code on the command line.
+status code on the command line.
 
 Installation
 ------------
