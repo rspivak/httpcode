@@ -30,4 +30,22 @@ Explain 405 status code
     Message: Method Not Allowed
     Code explanation: Specified method is invalid for this resource.
 
+List all codes
+
+::
+
+    $ hc
+    Status code 100
+    Message: Continue
+    Code explanation: Request received, please continue
+
+    Status code 101
+    Message: Switching Protocols
+    Code explanation: Switching to new protocol; obey Upgrade header
+
+    Status code 200
+    Message: OK
+    Code explanation: Request fulfilled, document follows
+
+    ...
 
