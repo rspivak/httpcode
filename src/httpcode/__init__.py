@@ -27,6 +27,7 @@ __author__ = 'Ruslan Spivak <ruslan.spivak@gmail.com>'
 import sys
 import optparse
 import textwrap
+import re
 
 # Codes with messages are taken verbatim from BaseHTTPServer.py
 
@@ -107,6 +108,20 @@ Code explanation: {explain}
 
 """
 
+def _print_search(option, opt_str, value, parser):
+    regex = re.compile(value, re.IGNORECASE)
+    found = {}
+    for code, descriptions in STATUS_CODES.iteritems():
+        if regex.search(descriptions[0]) or regex.search(descriptions[1]):
+            found[code] = descriptions
+    if found:
+        for code in sorted(found):
+            _print_code(code)
+    else:
+        sys.stderr.write('No status code found for search: %s\n' % value)
+        sys.exit(-1)
+    sys.exit()
+
 def _print_codes():
     for code in sorted(STATUS_CODES):
         _print_code(code)
@@ -129,6 +144,9 @@ def main():
     HTTP status codes and their description
     """
     parser = optparse.OptionParser(usage=textwrap.dedent(usage))
+    parser.add_option('-s', '--search', action='callback',
+            callback=_print_search, type='string',
+            help='search for a code by name or description')
     options, args = parser.parse_args()
 
     if args:
