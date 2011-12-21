@@ -18,3 +18,16 @@ Installation
     $ [sudo] pip install httpcode
 
 
+Usage
+-----
+
+Explain 405 status code
+
+::
+
+    $ hc 405
+    Status code 405
+    Message: Method Not Allowed
+    Code explanation: Specified method is invalid for this resource.
+
+
