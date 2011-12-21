@@ -88,6 +88,9 @@ STATUS_CODES = {
     417: ('Expectation Failed',
           'Expect condition could not be satisfied.'),
 
+    418: ('I\'m a teapot',
+          'The HTCPCP server is a teapot'),
+
     500: ('Internal Server Error', 'Server got itself in trouble'),
     501: ('Not Implemented',
           'Server does not support this operation'),
