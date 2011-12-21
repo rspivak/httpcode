@@ -107,7 +107,7 @@ Code explanation: {explain}
 """
 
 def _print_codes():
-    for code in STATUS_CODES:
+    for code in sorted(STATUS_CODES):
         _print_code(code)
 
 def _print_code(code):
