@@ -57,6 +57,19 @@ List all codes
 
     ...
 
+Search code(s) by description (case-insensitive)
+
+.. code-block:: bash
+
+    $ hc -s too
+    Status code 413
+    Message: Request Entity Too Large
+    Code explanation: Entity is too large.
+
+    Status code 414
+    Message: Request-URI Too Long
+    Code explanation: URI is too long.
+
 
 Show help
 
@@ -70,7 +83,10 @@ Show help
 
 
     Options:
-      -h, --help  show this help message and exit
+      -h, --help            show this help message and exit
+      -s SEARCH, --search=SEARCH
+                            Search for a code by name or description. Search text
+                            may contain regular expressions.
 
 
 Roadmap
