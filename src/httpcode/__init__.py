@@ -108,22 +108,22 @@ Code explanation: {explain}
 
 """
 
-def _print_search(option, opt_str, value, parser):
-    regex = re.compile(value, re.IGNORECASE)
-    found = {}
-    for code, descriptions in STATUS_CODES.iteritems():
-        if regex.search(descriptions[0]) or regex.search(descriptions[1]):
-            found[code] = descriptions
-    if found:
-        for code in sorted(found):
-            _print_code(code)
+def _print_search(text):
+    """Search for a code by description and print it."""
+    _is_text_found = re.compile(text, re.IGNORECASE).search
+    found_codes = dict(
+        (code, (short, long))
+        for code, (short, long) in STATUS_CODES.items()
+        if _is_text_found(short + long)
+        )
+    if found_codes:
+        _print_codes(found_codes)
     else:
-        sys.stderr.write('No status code found for search: %s\n' % value)
+        sys.stderr.write('No status code found for search: %s\n' % text)
         sys.exit(-1)
-    sys.exit()
 
-def _print_codes():
-    for code in sorted(STATUS_CODES):
+def _print_codes(codes=STATUS_CODES):
+    for code in sorted(codes):
         _print_code(code)
 
 def _print_code(code):
@@ -144,12 +144,16 @@ def main():
     HTTP status codes and their description
     """
     parser = optparse.OptionParser(usage=textwrap.dedent(usage))
-    parser.add_option('-s', '--search', action='callback',
-            callback=_print_search, type='string',
-            help='search for a code by name or description')
+    parser.add_option(
+        '-s', '--search', dest='search',
+        help=('Search for a code by name or description. '
+              'Search text may contain regular expressions.')
+        )
     options, args = parser.parse_args()
 
-    if args:
+    if options.search is not None:
+        _print_search(options.search)
+    elif args:
         _print_code(int(args[0]))
     else:
         _print_codes()
