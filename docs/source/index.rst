@@ -38,6 +38,15 @@ Explain 405 status code
     Message: Method Not Allowed
     Code explanation: Specified method is invalid for this resource.
 
+Or 418 status code :)
+
+.. code-block:: bash
+
+    $ hc 418
+    Status code 418
+    Message: I'm a teapot
+    Code explanation: The HTCPCP server is a teapot
+
 List all codes
 
 .. code-block:: bash
