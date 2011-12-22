@@ -154,7 +154,13 @@ def main():
     if options.search is not None:
         _print_search(options.search)
     elif args:
-        _print_code(int(args[0]))
+        if re.match(r'\d{3}$', args[0]):
+            _print_code(int(args[0]))
+        else:
+            code_filter = args[0].replace('x', '\d') + '$'
+            status_codes = filter(lambda c: re.match(code_filter, str(c)),
+                                  STATUS_CODES)
+            _print_codes(status_codes)
     else:
         _print_codes()
 
