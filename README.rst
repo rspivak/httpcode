@@ -74,7 +74,10 @@ Show help
 
 
     Options:
-      -h, --help  show this help message and exit
+      -h, --help            show this help message and exit
+      -s SEARCH, --search=SEARCH
+                            Search for a code by name or description. Search text
+                            may contain regular expressions.
 
 
 Roadmap
