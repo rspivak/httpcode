@@ -49,6 +49,18 @@ List all codes
 
     ...
 
+Search code(s) by description (case-insensitive)
+
+::
+
+    $ hc -s too
+    Status code 413
+    Message: Request Entity Too Large
+    Code explanation: Entity is too large.
+
+    Status code 414
+    Message: Request-URI Too Long
+    Code explanation: URI is too long.
 
 Show help
 
