@@ -77,14 +77,14 @@ Filter codes with a regex
 
 ::
 
-    $ hc [34]00
-    Status code 300
-    Message: Multiple Choices
-    Code explanation: Object has several resources -- see URI list
+    $ hc 30[12]
+    Status code 301
+    Message: Moved Permanently
+    Code explanation: Object moved permanently -- see URI list
 
-    Status code 400
-    Message: Bad Request
-    Code explanation: Bad request syntax or unsupported method
+    Status code 302
+    Message: Found
+    Code explanation: Object moved temporarily -- see URI list
 
 Use an 'x' for any digit
 
