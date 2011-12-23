@@ -10,7 +10,7 @@
 `httpcode` is a little utility that explains the meaning of an HTTP
 status code on the command line.
 
-`http://httpcode.readthedocs.org <http://httpcode.readthedocs.org>`
+`http://httpcode.readthedocs.org <http://httpcode.readthedocs.org>`_
 
 Installation
 ------------
