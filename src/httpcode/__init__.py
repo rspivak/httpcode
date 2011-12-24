@@ -111,18 +111,17 @@ Code explanation: {explain}
 def _print_search(text):
     """Search for a code by description and print it."""
     _is_text_found = re.compile(text, re.IGNORECASE).search
-    found_codes = dict(
-        (code, (short, long))
-        for code, (short, long) in STATUS_CODES.items()
+    found_codes = [
+        code for code, (short, long) in STATUS_CODES.items()
         if _is_text_found(short + long)
-        )
+        ]
     if found_codes:
         _print_codes(found_codes)
     else:
         sys.stderr.write('No status code found for search: %s\n' % text)
         sys.exit(-1)
 
-def _print_codes(codes=STATUS_CODES):
+def _print_codes(codes=STATUS_CODES.keys()):
     for code in sorted(codes):
         _print_code(code)
 
