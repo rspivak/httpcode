@@ -108,6 +108,10 @@ Code explanation: {explain}
 
 """
 
+def _print_filtered_codes(code):
+    code = code.replace('x', '\d') + '$'
+    _print_codes(filter(lambda c: re.match(code, str(c)), STATUS_CODES))
+
 def _print_search(text):
     """Search for a code by description and print it."""
     _is_text_found = re.compile(text, re.IGNORECASE).search
@@ -153,7 +157,10 @@ def main():
     if options.search is not None:
         _print_search(options.search)
     elif args:
-        _print_code(int(args[0]))
+        if re.match(r'\d{3}$', args[0]):
+            _print_code(int(args[0]))
+        else:
+            _print_filtered_codes(args[0])
     else:
         _print_codes()
 
