@@ -1,6 +1,11 @@
 Change History
 ==============
 
+0.4 (2011-12-27)
+----------------
+- regex and 'x' can be used as part of an HTTP code
+  https://github.com/rspivak/httpcode/pull/6
+
 0.3 (2011-12-22)
 ----------------
 - Add -s/--search option to search for code by description
