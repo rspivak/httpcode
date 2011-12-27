@@ -79,6 +79,31 @@ Search code(s) by description (case-insensitive)
     Message: Request-URI Too Long
     Code explanation: URI is too long.
 
+Filter codes with a regex
+
+.. code-block:: bash
+
+    $ hc 30[12]
+    Status code 301
+    Message: Moved Permanently
+    Code explanation: Object moved permanently -- see URI list
+
+    Status code 302
+    Message: Found
+    Code explanation: Object moved temporarily -- see URI list
+
+Use an 'x' for any digit
+
+.. code-block:: bash
+
+    $ hc 1xx
+    Status code 100
+    Message: Continue
+    Code explanation: Request received, please continue
+
+    Status code 101
+    Message: Switching Protocols
+    Code explanation: Switching to new protocol; obey Upgrade header
 
 Show help
 
