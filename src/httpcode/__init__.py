@@ -159,7 +159,10 @@ def _print_code(code):
 
 def main():
     usage = """\
-    usage: hc [code]
+    usage: hc [code] [options]
+
+    code may contain regular expression or use 'x' to denote any digit
+    code examples: 418, 30[12], 3.*, 1xx
 
     Without parameters lists all available
     HTTP status codes and their description

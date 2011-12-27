@@ -110,7 +110,10 @@ Show help
 .. code-block:: bash
 
     $ hc -h
-    Usage: hc [code]
+    Usage: hc [code] [options]
+
+    code may contain regular expression or use 'x' to denote any digit
+    code examples: 418, 30[12], 3.*, 1xx
 
     Without parameters lists all available
     HTTP status codes and their description
@@ -121,7 +124,6 @@ Show help
       -s SEARCH, --search=SEARCH
                             Search for a code by name or description. Search text
                             may contain regular expressions.
-
 
 Roadmap
 -------
