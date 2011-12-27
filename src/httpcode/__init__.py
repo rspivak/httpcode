@@ -108,9 +108,29 @@ Code explanation: {explain}
 
 """
 
+_IS_THREE_DIGIT_CODE = re.compile(r'\d{3}$').match
+
+
+def _exit(msg):
+    sys.stderr.write(msg)
+    sys.exit(-1)
+
 def _print_filtered_codes(code):
-    code = code.replace('x', '\d') + '$'
-    _print_codes(filter(lambda c: re.match(code, str(c)), STATUS_CODES))
+    """Search and print codes based on passed regexp.
+
+    Examples of codes with regexps:
+    $ hc 30[12]
+
+    $ hc 3..
+
+    Special case, use 'x' for any digit
+    $ hc 1xx
+    """
+    _has_code_match = re.compile(code.replace('x', '\d') + '$').match
+    found_codes = [c for c in STATUS_CODES if _has_code_match(str(c))]
+    if not found_codes:
+        _exit('No code found corresponding to: %s\n' % code)
+    _print_codes(found_codes)
 
 def _print_search(text):
     """Search for a code by description and print it."""
@@ -122,8 +142,7 @@ def _print_search(text):
     if found_codes:
         _print_codes(found_codes)
     else:
-        sys.stderr.write('No status code found for search: %s\n' % text)
-        sys.exit(-1)
+        _exit('No status code found for search: %s\n' % text)
 
 def _print_codes(codes=STATUS_CODES.keys()):
     for code in sorted(codes):
@@ -133,8 +152,7 @@ def _print_code(code):
     try:
         short, long = STATUS_CODES[code]
     except KeyError as e:
-        sys.stderr.write('No description found for code: %s\n' % code)
-        sys.exit(-1)
+        _exit('No description found for code: %s\n' % code)
     else:
         msg = MSG_FMT.format(code=code, message=short, explain=long)
         sys.stdout.write(msg)
@@ -157,10 +175,11 @@ def main():
     if options.search is not None:
         _print_search(options.search)
     elif args:
-        if re.match(r'\d{3}$', args[0]):
-            _print_code(int(args[0]))
+        code = args[0]
+        if _IS_THREE_DIGIT_CODE(code):
+            _print_code(int(code))
         else:
-            _print_filtered_codes(args[0])
+            _print_filtered_codes(code)
     else:
         _print_codes()
 
