@@ -6,3 +6,4 @@ Patches and Suggestions
 
 - Flavio Curella, https://github.com/fcurella
 - Peter Aronoff, https://github.com/telemachus
+- Mark Striemer, https://github.com/mstriemer
