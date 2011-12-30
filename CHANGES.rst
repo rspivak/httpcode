@@ -1,6 +1,10 @@
 Change History
 ==============
 
+0.5 (2011-12-30)
+----------------
+- Colorize HTTP codes
+
 0.4 (2011-12-27)
 ----------------
 - regex and 'x' can be used as part of an HTTP code
