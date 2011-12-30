@@ -17,7 +17,7 @@ def read(*rel_names):
 
 setup(
     name='httpcode',
-    version='0.4',
+    version='0.5',
     url='http://github.com/rspivak/httpcode',
     license='MIT',
     description='httpcode - explain HTTP status code',
