@@ -29,6 +29,8 @@ import optparse
 import textwrap
 import re
 
+from colorama import Style, init, deinit
+
 # Codes with messages are taken verbatim from BaseHTTPServer.py
 
 # Table mapping response codes to messages; entries have the
@@ -111,8 +113,13 @@ Code explanation: {explain}
 _IS_THREE_DIGIT_CODE = re.compile(r'\d{3}$').match
 
 
+def _colorize(text):
+    return Style.BRIGHT + text + Style.RESET_ALL
+
 def _exit(msg):
     sys.stderr.write(msg)
+    # stop colorama
+    deinit()
     sys.exit(-1)
 
 def _print_filtered_codes(code):
@@ -154,6 +161,8 @@ def _print_code(code):
     except KeyError as e:
         _exit('No description found for code: %s\n' % code)
     else:
+        # colorize code
+        code = _colorize(str(code))
         msg = MSG_FMT.format(code=code, message=short, explain=long)
         sys.stdout.write(msg)
 
@@ -174,6 +183,9 @@ def main():
               'Search text may contain regular expressions.')
         )
     options, args = parser.parse_args()
+
+    # initialize colorama
+    init()
 
     if options.search is not None:
         _print_search(options.search)
