@@ -19,6 +19,9 @@ Installation
 
     $ [sudo] pip install httpcode
 
+There is also an official DEB package available at
+`http://packages.debian.org/sid/httpcode <http://packages.debian.org/sid/httpcode>`_
+
 
 Usage
 -----
