@@ -40,6 +40,7 @@ STATUS_CODES = {
     100: ('Continue', 'Request received, please continue'),
     101: ('Switching Protocols',
           'Switching to new protocol; obey Upgrade header'),
+    102: ('Processing', 'WebDAV; RFC 2518'),
 
     200: ('OK', 'Request fulfilled, document follows'),
     201: ('Created', 'Document created, URL follows'),
@@ -49,6 +50,9 @@ STATUS_CODES = {
     204: ('No Content', 'Request fulfilled, nothing follows'),
     205: ('Reset Content', 'Clear input form for further input.'),
     206: ('Partial Content', 'Partial content follows.'),
+    207: ('Multi-Status', 'WebDAV; RFC 4918'),
+    208: ('Already Reported', 'WebDAV; RFC 5842'),
+    226: ('IM Used', 'RFC 3229'),
 
     300: ('Multiple Choices',
           'Object has several resources -- see URI list'),
@@ -60,8 +64,10 @@ STATUS_CODES = {
     305: ('Use Proxy',
           'You must use proxy specified in Location to access this '
           'resource.'),
+    306: ('Switch Proxy', 'Subsequent requests should use the specified proxy'),
     307: ('Temporary Redirect',
           'Object moved temporarily -- see URI list'),
+    308: ('Permanent Redirect', 'Object moved permanently'),
 
     400: ('Bad Request',
           'Bad request syntax or unsupported method'),
@@ -91,6 +97,13 @@ STATUS_CODES = {
     417: ('Expectation Failed',
           'Expect condition could not be satisfied.'),
     418: ("I'm a teapot", 'The HTCPCP server is a teapot'),
+    419: ('Authentication Timeout', 'previously valid authentication has expired'),
+    420: ('Method Failure / Enhance Your Calm', 'Spring Framework / Twitter'),
+    422: ('Unprocessable Entity', 'WebDAV; RFC 4918'),
+    423: ('Locked', 'WebDAV; RFC 4918'),
+    424: ('Failed Dependency / Method Failure', 'WebDAV; RFC 4918'),
+    425: ('Unordered Collection', 'Internet draft'),
+    426: ('Upgrade Required', 'client should switch to a different protocol'),
 
     500: ('Internal Server Error', 'Server got itself in trouble'),
     501: ('Not Implemented',
@@ -101,6 +114,10 @@ STATUS_CODES = {
     504: ('Gateway Timeout',
           'The gateway server did not receive a timely response'),
     505: ('HTTP Version Not Supported', 'Cannot fulfill request.'),
+    506: ('Variant Also Negotiates', 'RFC 2295'),
+    507: ('Insufficient Storage', 'WebDAV; RFC 4918'),
+    508: ('Loop Detected', 'WebDAV; RFC 5842'),
+    509: ('Bandwidth Limit Exceeded', 'Apache bw/limited extension'),
     }
 
 MSG_FMT = """\
