@@ -135,7 +135,7 @@ STATUS_CODES = {
     510: ('Not Extended', 'RFC 2774'),
     511: ('Network Authentication Required', 'RFC 6585'),
     598: ('Network read timeout error', 'Unknown'),
-    509: ('Network connect timeout error', 'Unknown'),
+    599: ('Network connect timeout error', 'Unknown'),
     }
 
 MSG_FMT = """\
