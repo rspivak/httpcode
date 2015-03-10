@@ -104,6 +104,20 @@ STATUS_CODES = {
     424: ('Failed Dependency / Method Failure', 'WebDAV; RFC 4918'),
     425: ('Unordered Collection', 'Internet draft'),
     426: ('Upgrade Required', 'client should switch to a different protocol'),
+    428: ('Precondition Required', 'RFC 6585'),
+    429: ('Too Many Requests', 'RFC 6585'),
+    431: ('Request Header Fields Too Large', 'RFC 6585'),
+    440: ('Login Timeout', 'Microsoft'),
+    444: ('No Response', 'Nginx'),
+    449: ('Retry With', 'Microsoft'),
+    450: ('Blocked by Windows Parental Controls', 'Microsoft'),
+    451: ('Unavailable For Legal Reasons', 'Internet draft'),
+    494: ('Request Header Too Large', 'Nginx'),
+    495: ('Cert Error', 'Nginx'),
+    496: ('No Cert', 'Nginx'),
+    497: ('HTTP to HTTPS', 'Nginx'),
+    498: ('Token expired/invalid', 'Esri'),
+    499: ('Client Closed Request', 'Nginx'),
 
     500: ('Internal Server Error', 'Server got itself in trouble'),
     501: ('Not Implemented',
@@ -118,6 +132,10 @@ STATUS_CODES = {
     507: ('Insufficient Storage', 'WebDAV; RFC 4918'),
     508: ('Loop Detected', 'WebDAV; RFC 5842'),
     509: ('Bandwidth Limit Exceeded', 'Apache bw/limited extension'),
+    510: ('Not Extended', 'RFC 2774'),
+    511: ('Network Authentication Required', 'RFC 6585'),
+    598: ('Network read timeout error', 'Unknown'),
+    509: ('Network connect timeout error', 'Unknown'),
     }
 
 MSG_FMT = """\
