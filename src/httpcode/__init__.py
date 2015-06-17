@@ -186,18 +186,18 @@ def _print_search(text):
     else:
         _exit('No status code found for search: %s\n' % text)
 
-def _print_codes(codes=STATUS_CODES.keys()):
+def _print_codes(noformat=False, codes=STATUS_CODES.keys()):
     for code in sorted(codes):
-        _print_code(code)
+        _print_code(code, noformat)
 
-def _print_code(code):
+def _print_code(code, noformat=False):
     try:
         short, long = STATUS_CODES[code]
     except KeyError as e:
         _exit('No description found for code: %s\n' % code)
     else:
         # colorize code
-        code = _colorize(str(code))
+        code = str(code) if noformat else _colorize(str(code))
         msg = MSG_FMT.format(code=code, message=short, explain=long)
         sys.stdout.write(msg)
 
@@ -217,6 +217,10 @@ def main():
         help=('Search for a code by name or description. '
               'Search text may contain regular expressions.')
         )
+    parser.add_option(
+        '-p', '--plain', action='store_true', dest='noformat',
+        help=( 'Disable formatting of output')
+        )
     options, args = parser.parse_args()
 
     # initialize colorama
@@ -227,11 +231,11 @@ def main():
     elif args:
         code = args[0]
         if _IS_THREE_DIGIT_CODE(code):
-            _print_code(int(code))
+            _print_code(int(code), options.noformat)
         else:
             _print_filtered_codes(code)
     else:
-        _print_codes()
+        _print_codes(options.noformat)
 
 if __name__ == '__main__':
     main()
