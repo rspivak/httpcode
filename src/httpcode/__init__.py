@@ -111,7 +111,7 @@ STATUS_CODES = {
     444: ('No Response', 'Nginx'),
     449: ('Retry With', 'Microsoft'),
     450: ('Blocked by Windows Parental Controls', 'Microsoft'),
-    451: ('Unavailable For Legal Reasons', 'Internet draft'),
+    451: ('Unavailable For Legal Reasons', 'RFC 7725'),
     494: ('Request Header Too Large', 'Nginx'),
     495: ('Cert Error', 'Nginx'),
     496: ('No Cert', 'Nginx'),
