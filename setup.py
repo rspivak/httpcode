@@ -7,6 +7,8 @@ classifiers = """\
 Intended Audience :: Developers
 License :: OSI Approved :: MIT License
 Programming Language :: Python
+Programming Language :: Python :: 2.7
+Programming Language :: Python :: 3
 Topic :: Internet :: WWW/HTTP
 Operating System :: Unix
 """
@@ -17,7 +19,7 @@ def read(*rel_names):
 
 setup(
     name='httpcode',
-    version='0.5',
+    version='0.6',
     url='http://github.com/rspivak/httpcode',
     license='MIT',
     description='httpcode - explain HTTP status code',

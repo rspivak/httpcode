@@ -1,6 +1,11 @@
 Change History
 ==============
 
+0.6 (2017-04-03)
+----------------
+- Use argparse instead of optparse
+- Declare as Python 2.7+ and Python 3 compatible
+
 0.5 (2011-12-30)
 ----------------
 - Colorize HTTP codes
