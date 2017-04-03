@@ -1,6 +1,6 @@
 ###############################################################################
 #
-# Copyright (c) 2011 Ruslan Spivak
+# Copyright (c) 2011 - 2017 Ruslan Spivak
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
 # of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@
 __author__ = 'Ruslan Spivak <ruslan.spivak@gmail.com>'
 
 import sys
-import optparse
+import argparse
 import textwrap
 import re
 
@@ -172,21 +172,21 @@ def _print_filtered_codes(code):
     found_codes = [c for c in STATUS_CODES if _has_code_match(str(c))]
     if not found_codes:
         _exit('No code found corresponding to: %s\n' % code)
-    _print_codes(found_codes)
+    _print_codes(codes=found_codes)
 
-def _print_search(text):
+def _print_search(text, noformat=False):
     """Search for a code by description and print it."""
     _is_text_found = re.compile(text, re.IGNORECASE).search
     found_codes = [
         code for code, (short, long) in STATUS_CODES.items()
         if _is_text_found(short + long)
-        ]
+    ]
     if found_codes:
-        _print_codes(found_codes)
+        _print_codes(codes=found_codes, noformat=noformat)
     else:
         _exit('No status code found for search: %s\n' % text)
 
-def _print_codes(noformat=False, codes=STATUS_CODES.keys()):
+def _print_codes(codes=STATUS_CODES.keys(), noformat=False):
     for code in sorted(codes):
         _print_code(code, noformat)
 
@@ -205,37 +205,45 @@ def main():
     usage = """\
     usage: hc [code] [options]
 
-    code may contain regular expression or use 'x' to denote any digit
-    code examples: 418, 30[12], 3.*, 1xx
-
     Without parameters lists all available
     HTTP status codes and their description
     """
-    parser = optparse.OptionParser(usage=textwrap.dedent(usage))
-    parser.add_option(
-        '-s', '--search', dest='search',
+    parser = argparse.ArgumentParser(usage=textwrap.dedent(usage))
+    parser.add_argument(
+        'code',
+        nargs='?',
+        help=("Code may contain regular expression or use 'x' to denote "
+              "any digit. Code examples: 418, 30[12], 3.*, 1xx")
+    )
+
+    parser.add_argument(
+        '-s', '--search',
+        dest='search',
         help=('Search for a code by name or description. '
               'Search text may contain regular expressions.')
-        )
-    parser.add_option(
-        '-p', '--plain', action='store_true', dest='noformat',
+    )
+    parser.add_argument(
+        '-p', '--plain',
+        action='store_true',
+        dest='noformat',
+        default=False,
         help=( 'Disable formatting of output')
-        )
-    options, args = parser.parse_args()
+    )
+    args = parser.parse_args()
 
     # initialize colorama
     init()
 
-    if options.search is not None:
-        _print_search(options.search)
-    elif args:
-        code = args[0]
+    if args.search is not None:
+        _print_search(args.search, noformat=args.noformat)
+    elif args.code:
+        code = args.code
         if _IS_THREE_DIGIT_CODE(code):
-            _print_code(int(code), options.noformat)
+            _print_code(int(code), args.noformat)
         else:
             _print_filtered_codes(code)
     else:
-        _print_codes(options.noformat)
+        _print_codes(noformat=args.noformat)
 
 if __name__ == '__main__':
     main()
