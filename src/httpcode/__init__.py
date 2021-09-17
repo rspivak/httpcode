@@ -41,6 +41,7 @@ STATUS_CODES = {
     101: ('Switching Protocols',
           'Switching to new protocol; obey Upgrade header'),
     102: ('Processing', 'WebDAV; RFC 2518'),
+    103: ('Early Hints', 'RFC 8297'),
 
     200: ('OK', 'Request fulfilled, document follows'),
     201: ('Created', 'Document created, URL follows'),
