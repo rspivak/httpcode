@@ -80,7 +80,7 @@ Filter codes with a regex
 
 ::
 
-    $ hc 30[12]
+    $ hc '30[12]'
     Status code 301
     Message: Moved Permanently
     Code explanation: Object moved permanently -- see URI list
