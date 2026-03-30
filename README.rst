@@ -7,6 +7,9 @@
     |_| |_| |_|   |_| |_|    \____\___/|____/|_____|
 
 
+**NOTE:** A newer, faster version written in Go, with updated HTTP codes, is available at
+`httpcode-go <https://github.com/rspivak/httpcode-go>`_
+
 `httpcode` is a little utility that explains the meaning of an HTTP
 status code on the command line.
 
